@@ -1,4 +1,4 @@
-Name:                scaffold
+Name:                odoo
 Version:             0.1
 Synopsis:            Project Synopsis Here
 Description:         Project Description Here
@@ -18,7 +18,7 @@ Flag old-base
   default: False
   manual: False
 
-Executable scaffold
+Executable odoo
   hs-source-dirs: src
   main-is: Main.hs
 
