@@ -42,7 +42,6 @@ RUN cd /opt/odoo && cabal build
 
 # Add production assets and run application
 
-ADD ./log /opt/odoo/log
 ADD ./snaplets /opt/odoo/snaplets
 ADD ./static /opt/odoo/static
 ADD ./.ghci /opt/odoo/.ghci
