@@ -5,6 +5,9 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN cabal update
 
+# put logs somewhere
+RUN mkdir /var/log/barebones
+
 # Install Dependencies into sandbox. Each command is cached by Docker
 # so we don't have to reinstall everything unless we make changes to 
 # our .cabal file.
@@ -46,4 +49,5 @@ ADD ./.ghci /opt/odoo/.ghci
 
 WORKDIR /opt/odoo
 
-CMD ["/opt/odoo/dist/build/odoo/odoo"]
+CMD ["/opt/odoo/dist/build/odoo/odoo","--access-log", "/var/log/barebones/access.log", "--error-log", "/var/log/barebones/error.log"]
+
