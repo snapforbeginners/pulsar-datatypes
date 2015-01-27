@@ -1,0 +1,9 @@
+pg:
+  build: ./postgres-container
+oodo:
+#  command: sleep infinity
+  build: .
+  links:
+    - pg:postgres
+  ports:
+    - 8000:8000

@@ -2,7 +2,7 @@ FROM haskell:7.8
 
 # update packages
 RUN apt-get update
-RUN apt-get install -y git
+RUN apt-get install -y git libpq-dev
 RUN cabal update
 
 # put logs somewhere
@@ -20,6 +20,8 @@ RUN git clone https://github.com/snapframework/snap-core.git /opt/deps/snap-core
 RUN git clone https://github.com/snapframework/snap-server.git /opt/deps/snap-server
 RUN git clone https://github.com/snapframework/snap-loader-static.git /opt/deps/snap-loader-static
 RUN git clone https://github.com/snapframework/heist.git /opt/deps/heist
+RUN git clone https://github.com/mightybyte/snaplet-postgresql-simple.git /opt/deps/snaplet-postgres-simple
+RUN cd /opt/deps/snaplet-postgres-simple && git checkout 1.0
 
 # Create Sandbox and Add Source Deps
 RUN cd /opt/odoo &&\
@@ -29,7 +31,8 @@ RUN cd /opt/odoo &&\
         cabal sandbox add-source /opt/deps/snap-core &&\
         cabal sandbox add-source /opt/deps/snap-server &&\
         cabal sandbox add-source /opt/deps/snap-loader-static &&\
-        cabal sandbox add-source /opt/deps/heist
+        cabal sandbox add-source /opt/deps/heist &&\
+        cabal sandbox add-source /opt/deps/snaplet-postgres-simple
 
 ### END 1.0 dependencies
 
