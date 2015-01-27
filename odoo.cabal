@@ -34,7 +34,8 @@ Executable odoo
     snap-loader-static        >= 1.0     && < 1.1,
     text                      >= 0.11    && < 1.3,
     time                      >= 1.1     && < 1.6,
-    xmlhtml                   >= 0.1
+    xmlhtml                   >= 0.1,
+    snaplet-postgresql-simple >= 1.0
 
   if flag(old-base)
     build-depends:
