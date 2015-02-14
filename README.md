@@ -1,6 +1,9 @@
-# odoo Postgres
+# odoo Datatypes
 
-This is a default template, with Postgres added.
+This builds on
+[`odoo-postgres`](https://github.com/snapforbeginners/odoo-postgres)
+to create a set of datatypes we will use to insert and retrieve data
+from Postgres.
 
 # Using the Image
 
@@ -8,14 +11,14 @@ The Image is available on the docker registry along with a pre-set up
 Postgres image:
 
 ```
-docker pull snapforbeginners/odoo-postgres:odoo
-docker pull snapforbeginners/odoo-postgres:postgres
+docker pull snapforbeginners/odoo-datatypes:odoo
+docker pull snapforbeginners/odoo-datatypes:postgres
 ```
 
 First, bring up the Postgres container with a name:
 
 ```
-docker run -it --name odoo-pg snapforbeginners/odoo-postgres:postgres
+docker run -it --name odoo-pg snapforbeginners/odoo-datatypes:postgres
 ```
 
 Then use that name (`odoo-pg`) to link the running postgres container
@@ -23,7 +26,7 @@ to our application, under the alias "postgres". We'll also expose port
 `8000`, since odoo runs on that port.
 
 ```
-docker run -it --link odoo-pg:postgres -p 8000:8000 snapforbeginners/odoo-postgres:odoo
+docker run -it --link odoo-pg:postgres -p 8000:8000 snapforbeginners/odoo-datatypes:odoo
 ```
 
 # Building
@@ -41,14 +44,14 @@ docker-compose up odoo
 To build a new image, we need to clone this repository and run `docker build`.
 
 ```
-git clone git@github.com:snapforbeginners/odoo-postgres.git
-cd odoo-postgres
-docker build -t odoo-pg .
+git clone git@github.com:snapforbeginners/datatypes.git odoo-datatypes
+cd odoo-datatypes
+docker build -t odoo-dt .
 ```
 
 then we can run it as before:
 
 ```
-docker run -it -p 8000:8000 odoo-pg
+docker run -it -p 8000:8000 odoo-dt
 ```
 
