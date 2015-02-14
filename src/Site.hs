@@ -15,6 +15,9 @@ import           Data.Map.Syntax                             (( ## ))
 import           Data.Monoid
 import qualified Data.Text                                   as T
 import qualified Heist.Interpreted                           as I
+import           Odoo.Handlers                               (getAllTest,
+                                                              getOneTest,
+                                                              insertTest)
 import           Snap.Core
 import           Snap.Snaplet
 import           Snap.Snaplet.Auth
@@ -67,6 +70,9 @@ routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
+         , ("/insert", method POST $ with pg $ insertTest)
+         , ("/show", method GET $ with pg $ getAllTest)
+         , ("/show/one", method GET $ with pg $ getOneTest)
          , ("",          serveDirectory "static")
          ]
 

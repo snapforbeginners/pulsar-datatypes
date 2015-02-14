@@ -6,12 +6,9 @@ RUN apt-get install -y git libpq-dev
 RUN cabal update
 
 # put logs somewhere
-RUN mkdir /var/log/barebones
-
-# Install Dependencies into sandbox. Each command is cached by Docker
-# so we don't have to reinstall everything unless we make changes to 
-# our .cabal file.
-ADD ./odoo.cabal /opt/odoo/odoo.cabal
+RUN mkdir /var/log/odoo
+# make app dir
+RUN mkdir -p /opt/odoo
 
 ### 1.0 dependencies
 RUN git clone https://github.com/snapframework/io-streams-haproxy.git /opt/deps/io-streams-haproxy
@@ -36,6 +33,11 @@ RUN cd /opt/odoo &&\
 
 ### END 1.0 dependencies
 
+# Install Dependencies into sandbox. Each command is cached by Docker
+# so we don't have to reinstall everything unless we make changes to 
+# our .cabal file.
+ADD ./odoo.cabal /opt/odoo/odoo.cabal
+
 RUN cd /opt/odoo && cabal install --only-dependencies -j4
 
 # Add Application Code
@@ -51,5 +53,4 @@ ADD ./.ghci /opt/odoo/.ghci
 
 WORKDIR /opt/odoo
 
-CMD ["/opt/odoo/dist/build/odoo/odoo","--access-log", "/var/log/barebones/access.log", "--error-log", "/var/log/barebones/error.log"]
-
+CMD ["/opt/odoo/dist/build/odoo/odoo","--access-log", "/var/log/odoo/access.log", "--error-log", "/var/log/odoo/error.log"]

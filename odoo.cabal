@@ -18,6 +18,9 @@ Flag old-base
   default: False
   manual: False
 
+--Library
+--  exposed-modules:
+
 Executable odoo
   hs-source-dirs: src
   main-is: Main.hs
@@ -26,7 +29,7 @@ Executable odoo
     bytestring                >= 0.9.1   && < 0.11,
     heist                     >= 1.0     && < 1.1,
     map-syntax                >= 0.2     && < 0.3,
-    monad-control             >= 0.3     && < 0.4,
+    monad-control             >= 1.0     && < 1.1,
     mtl                       >= 2       && < 3,
     snap                      >= 1.0     && < 1.1,
     snap-core                 >= 1.0     && < 1.1,
@@ -35,7 +38,8 @@ Executable odoo
     text                      >= 0.11    && < 1.3,
     time                      >= 1.1     && < 1.6,
     xmlhtml                   >= 0.1,
-    snaplet-postgresql-simple >= 1.0
+    snaplet-postgresql-simple >= 1.0,
+    postgresql-simple         >= 0.4.9.0
 
   if flag(old-base)
     build-depends:
