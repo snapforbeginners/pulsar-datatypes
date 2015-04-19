@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Odoo.Handlers where
+module Pulsar.Handlers where
 
 import qualified Data.Text                     as T (pack)
-import           Odoo.Microblog                (getAllMicroblogs, getMicroblog,
+import           Pulsar.Microblog              (getAllMicroblogs, getMicroblog,
                                                 insertMicroblog)
-import           Odoo.Types                    (Blog (..), MicroblogID (..),
+import           Pulsar.Types                  (Blog (..), MicroblogID (..),
                                                 ToPGMicroblog (..),
                                                 Username (..))
 import           Snap                          (Handler, writeText)

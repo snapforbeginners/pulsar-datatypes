@@ -1,7 +1,6 @@
 pg:
   build: ./postgres-container
-odoo:
-#  command: sleep infinity
+pulsar:
   build: .
   links:
     - pg:postgres

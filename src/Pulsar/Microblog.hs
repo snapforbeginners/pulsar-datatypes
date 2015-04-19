@@ -1,12 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Odoo.Microblog
+module Pulsar.Microblog
          (getAllMicroblogs
          ,getMicroblog
          ,insertMicroblog) where
 
 import           Data.Maybe                    (listToMaybe)
 import           GHC.Int                       (Int64)
-import           Odoo.Types                    (Blog (..), Microblog (..),
+import           Pulsar.Types                  (Blog (..), Microblog (..),
                                                 MicroblogID (..),
                                                 ToPGMicroblog (..),
                                                 Username (..))

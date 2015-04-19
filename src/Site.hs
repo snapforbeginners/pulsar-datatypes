@@ -15,7 +15,7 @@ import           Data.Map.Syntax                             (( ## ))
 import           Data.Monoid
 import qualified Data.Text                                   as T
 import qualified Heist.Interpreted                           as I
-import           Odoo.Handlers                               (getAllTest,
+import           Pulsar.Handlers                             (getAllTest,
                                                               getOneTest,
                                                               insertTest)
 import           Snap.Core

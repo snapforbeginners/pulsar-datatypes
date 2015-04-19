@@ -1,4 +1,4 @@
-Name:                odoo
+Name:                pulsar
 Version:             0.1
 Synopsis:            Project Synopsis Here
 Description:         Project Description Here
@@ -18,28 +18,25 @@ Flag old-base
   default: False
   manual: False
 
---Library
---  exposed-modules:
-
-Executable odoo
+Executable pulsar
   hs-source-dirs: src
   main-is: Main.hs
 
   Build-depends:
     bytestring                >= 0.9.1   && < 0.11,
-    heist                     >= 1.0     && < 1.1,
+    heist                     >= 0.14    && < 0.15,
     map-syntax                >= 0.2     && < 0.3,
-    monad-control             >= 1.0     && < 1.1,
+    MonadCatchIO-transformers >= 0.2.1   && < 0.4,
     mtl                       >= 2       && < 3,
-    snap                      >= 1.0     && < 1.1,
-    snap-core                 >= 1.0     && < 1.1,
-    snap-server               >= 1.0     && < 1.1,
-    snap-loader-static        >= 1.0     && < 1.1,
+    snap                      >= 0.13    && < 0.15,
+    snap-core                 >= 0.9     && < 0.10,
+    snap-server               >= 0.9     && < 0.10,
+    snap-loader-static        >= 0.9     && < 0.10,
     text                      >= 0.11    && < 1.3,
     time                      >= 1.1     && < 1.6,
-    xmlhtml                   >= 0.1,
-    snaplet-postgresql-simple >= 1.0,
-    postgresql-simple         >= 0.4.9.0
+    xmlhtml                   >= 0.1     && < 0.3,
+    snaplet-postgresql-simple == 0.6.0.1,
+    postgresql-simple           == 0.4.10.0
 
   if flag(old-base)
     build-depends:
@@ -48,11 +45,11 @@ Executable odoo
   else
     build-depends:
       base                      >= 4.4      && < 5,
-      lens                      >= 3.7.6    && < 4.7
+      lens                      >= 3.7.6    && < 4.10
 
   if flag(development)
     build-depends:
-      snap-loader-dynamic >= 1.0 && < 1.1
+      snap-loader-dynamic == 0.10.*
     cpp-options: -DDEVELOPMENT
     -- In development mode, speed is already going to suffer, so skip
     -- the fancy optimization flags.  Additionally, disable all

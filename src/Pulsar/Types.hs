@@ -1,11 +1,11 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module Odoo.Types
-        (Microblog(..)
-        ,ToPGMicroblog(..)
-        ,Blog (..)
-        ,Username (..)
-        ,MicroblogID(..)) where
+module Pulsar.Types
+              (Microblog(..)
+              ,ToPGMicroblog(..)
+              ,Blog (..)
+              ,Username (..)
+              ,MicroblogID(..)) where
 
 import           Control.Applicative                  ((<$>), (<*>))
 import           Data.Text                            (Text)
